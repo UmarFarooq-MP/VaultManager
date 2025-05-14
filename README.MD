@@ -8,13 +8,13 @@ This guide sets up HashiCorp Vault using file-based storage **inside the contain
 
 ```bash
 docker run --cap-add=IPC_LOCK \
-  -p 8200:8200 \
+  -p 8800:8800 \
   --name vault-file \
   -e 'VAULT_LOCAL_CONFIG={
     "ui": true,
     "listener": [{
       "tcp": {
-        "address": "0.0.0.0:8200",
+        "address": "0.0.0.0:8800",
         "tls_disable": true
       }
     }],
@@ -50,7 +50,7 @@ docker exec -it vault-file vault operator unseal <key3>
 Set the Vault address and log in using the root token:
 
 ``` bash
-export VAULT_ADDR=http://localhost:8200
+export VAULT_ADDR=http://localhost:8800
 vault login <root_token>
 ```
 
@@ -79,7 +79,7 @@ JWT_SECRET   my-super-secret
 ```
 
 ## ✅ Step 7: Notes
-- Vault UI: http://localhost:8200
+- Vault UI: http://localhost:8800
 - Secrets are stored in /vault/data inside the container
 - Secrets persist across restarts, but:
 - You must unseal again after a restart

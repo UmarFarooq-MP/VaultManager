@@ -7,14 +7,14 @@ This guide sets up HashiCorp Vault using file-based storage **inside the contain
 ## 📦 Step 1: Run Vault Container
 
 ```bash
-docker run --cap-add=IPC_LOCK \
-  -p 8800:8800 \
+docker run -d --cap-add=IPC_LOCK \
+  -p 8200:8200 \
   --name vault-file \
   -e 'VAULT_LOCAL_CONFIG={
     "ui": true,
     "listener": [{
       "tcp": {
-        "address": "0.0.0.0:8800",
+        "address": "0.0.0.0:8200",
         "tls_disable": true
       }
     }],
@@ -25,7 +25,6 @@ docker run --cap-add=IPC_LOCK \
     }
   }' \
   hashicorp/vault:1.15.5
-
 ```
 ## Step 2: Initialize Vault
 

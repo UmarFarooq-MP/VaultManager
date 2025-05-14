@@ -8,13 +8,13 @@ This guide sets up HashiCorp Vault using file-based storage **inside the contain
 
 ```bash
 docker run -d --cap-add=IPC_LOCK \
-  -p 8200:8200 \
+  -p 8800:8800 \
   --name vault-file \
   -e 'VAULT_LOCAL_CONFIG={
     "ui": true,
     "listener": [{
       "tcp": {
-        "address": "0.0.0.0:8200",
+        "address": "0.0.0.0:8800",
         "tls_disable": true
       }
     }],

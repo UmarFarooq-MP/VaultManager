@@ -9,6 +9,11 @@ import (
 	"vault/internal/shared"
 )
 
+type HashiCorpConfig struct {
+	SecretKey    string `json:"secret_key"`
+	ClientID     string `json:"client_id"`
+	ClientSecret string `json:"client_secret"`
+}
 type Hashicrop struct {
 	kv     *vault.KVv2
 	config *shared.AppConfig
